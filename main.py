@@ -25,3 +25,9 @@ print("="*40, "Boot Time", "="*40)
 boot_time_timestamp = psutil.boot_time()
 bt = datetime.fromtimestamp(boot_time_timestamp)
 print(f"Boot Time: {bt.year}/{bt.month}/{bt.day} {bt.hour}:{bt.minute}:{bt.second}")
+
+#get CPU percent
+print(f"CPU Usage: {psutil.cpu_percent(interval=1)}%")
+
+#get per-CPU percentages
+print(f"Per-CPU Usage: {psutil.cpu_percent(interval=1, percpu=True)}")
