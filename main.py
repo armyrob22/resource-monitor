@@ -1,33 +1,17 @@
 import psutil
-import platform
-from datetime import datetime
+import time
 
-#Set proper scale for byte format
-def get_size(bytes, suffix="B"):
-    factor = 1024
-    for unit in ["", "K","M", "G", "T", "P"]:
-        if bytes < factor:
-            return f"{bytes:.2f}{unit}{suffix}"
-        bytes /= factor
-
-#Platform module
-print("="*40, "System Information", "="*40)
-uname = platform.uname()
-print(f"System: {uname.system}")
-print(f"Node Name: {uname.node}")
-print(f"Release: {uname.release}")
-print(f"Version: {uname.version}")
-print(f"Machine: {uname.machine}")
-print(f"Processor: {uname.processor}")
-
-#Getting the date and time of the computer for when it was turned on
-print("="*40, "Boot Time", "="*40)
-boot_time_timestamp = psutil.boot_time()
-bt = datetime.fromtimestamp(boot_time_timestamp)
-print(f"Boot Time: {bt.year}/{bt.month}/{bt.day} {bt.hour}:{bt.minute}:{bt.second}")
-
-#get CPU percent
-print(f"CPU Usage: {psutil.cpu_percent(interval=1)}%")
-
-#get per-CPU percentages
-print(f"Per-CPU Usage: {psutil.cpu_percent(interval=1, percpu=True)}")
+while True:
+    time.sleep(1)
+    cpu_usage = psutil.cpu_percent(interval=1)
+    if cpu_usage >= 75:
+        print("Cpu usage is to high!")   
+    print("CPU Usage:", cpu_usage)
+    memory_usage = psutil.virtual_memory().percent
+    if memory_usage >= 80:
+        print("memory at critical limit!")
+    print("memory usage:", memory_usage)
+    disk_usage = psutil.disk_usage('C:').percent
+    if disk_usage >= 60:
+        print("You better clean your hard drive sir!")
+    print("disk usage:", disk_usage)
