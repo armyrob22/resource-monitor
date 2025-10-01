@@ -3,10 +3,12 @@ import time
 
 while True:
     time.sleep(1)
-    cpu_usage = psutil.cpu_percent(interval=1)
+    cpu_usage = psutil.cpu_percent(interval=1,)
     if cpu_usage >= 75:
-        print("Cpu usage is to high!")   
+        print("Cpu usage is to high!")
+    per_cpu = psutil.cpu_percent(interval=1, percpu=True)   
     print("CPU Usage:", cpu_usage)
+    print("Per CPU Usage:", per_cpu)
     memory_usage = psutil.virtual_memory().percent
     if memory_usage >= 80:
         print("memory at critical limit!")
