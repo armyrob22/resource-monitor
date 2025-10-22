@@ -2,6 +2,7 @@ import streamlit as st
 import psutil
 import time
 import plotly.graph_objects as go
+import os
 
 st.title("My Server Resource Monitor!")
 col1, col2, col3 = st.columns(3)
@@ -54,7 +55,7 @@ with col2:
 ))
     st.plotly_chart(fig_memory, use_container_width=True)
 
-disk_usage = psutil.disk_usage('C:').percent
+disk_usage = psutil.disk_usage('/').percent
 
 with col3:
     fig_disk = go.Figure(go.Indicator(
