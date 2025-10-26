@@ -1,0 +1,11 @@
+
+services:
+  resource-monitor:
+    build: .
+    volumes:
+      - ./logs:/app/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8051:8051"
+
+    
