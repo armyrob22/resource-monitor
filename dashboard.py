@@ -78,7 +78,7 @@ else:
 st.title("My Cluster Monitor with logs!")
 @fragment(run_every="1s")
 def live_metrics():
-    col1, col2, col3, = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     cpu_usage = psutil.cpu_percent(interval=1)
 
     with col1:
@@ -103,7 +103,7 @@ def live_metrics():
     ))
         st.plotly_chart(fig_cpu, use_container_width=True)
 
-        memory_usage = psutil.virtual_memory().percent
+    memory_usage = psutil.virtual_memory().percent
 
     with col2:
         fig_memory = go.Figure(go.Indicator(
@@ -127,7 +127,7 @@ def live_metrics():
     ))
         st.plotly_chart(fig_memory, use_container_width=True)
 
-        disk_usage = psutil.disk_usage('/').percent
+    disk_usage = psutil.disk_usage('/').percent
 
     with col3:
         fig_disk = go.Figure(go.Indicator(
@@ -150,4 +150,10 @@ def live_metrics():
         }
     ))
         st.plotly_chart(fig_disk, use_container_width=True)
+     
+
+    #per_cpu_usage = psutil.cpu_percent(percpu=True)
+
+    #with col4:
+        
 live_metrics()

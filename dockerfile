@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8051
 
-CMD [ "streamlit", "run", "dashboard.py", "--server.port=8051" ]
+CMD [ "streamlit", "run", "dashboard.py", "server.address=0.0.0.0", "--server.port=8051" ]
