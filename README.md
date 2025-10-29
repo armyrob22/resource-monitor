@@ -17,6 +17,6 @@ To run this monitor you can clone the files and build with docker compose versio
 - docker compose up
 
 - This will load the container. you can run it locally or I do have it listening on all addresses to access it remotely.
-http://localhost:8051 or http://<server-ip-address>:8051.
+http://localhost:8051 or http://"server-ip-address":8051.
 
 - The extra folders are testing logs i created to test the error's and warning functions. you can remove them.
